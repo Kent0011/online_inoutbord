@@ -1,0 +1,15 @@
+<%= form_tag("/users/create") do %>
+    <p>User name</p>
+    <input name="name">
+
+    <p>email adress</p>
+    <input name="email">
+
+    <p>password</p>
+    <input type="password" name="password">
+
+    <p>confirm password</p>
+    <input type="password" name="password_confirmation">
+
+    <input type="submit" value="登録">
+<% end %>
