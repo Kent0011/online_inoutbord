@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/', to: 'top#index'
+  get 'rooms/new', to: 'rooms#new'
+  post 'rooms/create', to: 'rooms#create'
+  get '/rooms/:id', to: 'rooms#show'
 
 end

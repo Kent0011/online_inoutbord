@@ -1,0 +1,12 @@
+<%= form_tag("/rooms/create") do %>
+    <p>Room title</p>
+    <input name="name">
+
+    <p>password</p>
+    <input type="password" name="password">
+
+    <p>confirm password</p>
+    <input type="password" name="password_confirmation">
+
+    <input type="submit" value="make a room">
+<% end %>
