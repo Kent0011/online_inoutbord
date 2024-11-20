@@ -1,0 +1,13 @@
+<% if @error_message %>
+    <%= @error_message %>
+<% end %>
+
+<%= form_tag("/rooms/login") do %>
+    <p>Room id</p>
+    <input name="id">
+
+    <p>password</p>
+    <input type="password" name="password">
+
+    <input type="submit" value="Enter a room">
+<% end %>

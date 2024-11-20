@@ -9,6 +9,25 @@ class RoomsController < ActionController::Base
     redirect_to("/rooms/#{@room.uuid}")
   end
 
+  def login_form
+  end
+
+  def login
+    @room = Room.find_by(uuid: params['id'])
+
+    if @room
+      if @room.authenticate(params['password'])
+        redirect_to("/rooms/#{@room.uuid}")
+      else
+        @error_message = "IDまたはパスワードが間違っています"
+        render('/rooms/login_form')
+      end
+    else
+      @error_message = "IDまたはパスワードが間違っています"
+      render('/rooms/login_form')
+    end
+  end
+
   def show
     @room = Room.find_by(uuid: params['id'])
   end

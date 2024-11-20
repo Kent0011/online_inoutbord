@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/', to: 'top#index'
   get 'rooms/new', to: 'rooms#new'
+  get 'rooms/login_form', to: 'rooms#login_form'
+  post 'rooms/login', to: 'rooms#login'
   post 'rooms/create', to: 'rooms#create'
   get '/rooms/:id', to: 'rooms#show'
 
