@@ -21,6 +21,7 @@ class RoomsController < ActionController::Base
   def create
     @room = Room.new(name:params['name'], password: params['password'], password_confirmation: params['password_confirmation'])
     @room.save
+    session[:room_id] = @room.uuid
     redirect_to("/rooms/#{@room.uuid}")
   end
 
