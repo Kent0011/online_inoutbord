@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+.navbar-brand{
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+.logo{
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+.jumbotron{
+    color: "white";
+    padding: 10%;
+    background: url("DSC_1193.jpeg");
+    background-size: cover;
+    background-position: center 60%;
+}
+
+.padding-5{
+    padding: 5%;
+}

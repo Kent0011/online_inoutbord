@@ -1,4 +1,5 @@
 class RoomsController < ActionController::Base
+  layout "application"
   before_action :correct_room, except: [:new, :create, :login_form, :login, :logout]
 
   def correct_room
@@ -16,6 +17,7 @@ class RoomsController < ActionController::Base
   end
 
   def new
+    session[:room_id] = nil
   end
 
   def create
@@ -26,6 +28,7 @@ class RoomsController < ActionController::Base
   end
 
   def login_form
+    session[:room_id] = nil
   end
 
   def login

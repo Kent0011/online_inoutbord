@@ -1,12 +1,32 @@
-<%= form_tag("/rooms/create") do %>
-    <p>Room title</p>
-    <input name="name">
+<h1 class="text-center m-5">
+    新規ルームを作成
+</h1>
 
-    <p>password</p>
-    <input type="password" name="password">
+<div class="m-5">
+    <div class="col-sm-12 col-md-8 mx-auto">
+        <% if @error_message %>
+            <div class="alert alert-danger" role="alert">
+                <%= @error_message %>
+            </div>
+        <% end %>
 
-    <p>confirm password</p>
-    <input type="password" name="password_confirmation">
+        <%= form_tag("/rooms/create") do %>
 
-    <input type="submit" value="make a room">
-<% end %>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">タイトル</label>
+              <input name="name" class="form-control" placeholder="タイトル">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">password</label>
+              <input type="password" name="password" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">password(確認)</label>
+              <input type="password" name="password_confirmation" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"></textarea>
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="submit" value="作成" class="btn btn-primary mx-4 my-2">
+            </div>
+        <% end %>
+    </div>
+</div>

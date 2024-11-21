@@ -1,13 +1,28 @@
-<% if @error_message %>
-    <%= @error_message %>
-<% end %>
+<h1 class="text-center m-5">
+    ログイン
+</h1>
 
-<%= form_tag("/rooms/login") do %>
-    <p>Room id</p>
-    <input name="id">
+<div class="m-5">
+    <div class="col-sm-12 col-md-8 mx-auto">
+        <% if @error_message %>
+            <div class="alert alert-danger" role="alert">
+                <%= @error_message %>
+            </div>
+        <% end %>
 
-    <p>password</p>
-    <input type="password" name="password">
+        <%= form_tag("/rooms/login") do %>
 
-    <input type="submit" value="Enter a room">
-<% end %>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Room ID</label>
+              <input name="id" class="form-control" placeholder="Paste room ID">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">password</label>
+              <input type="password" name="password" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"></textarea>
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="submit" value="ログイン" class="btn btn-primary mx-5 my-2">
+            </div>
+        <% end %>
+    </div>
+</div>

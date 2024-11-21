@@ -1,6 +1,17 @@
-<h1>
-    Online in-out Bord
-</h1>
+<div class="jumbotron text-center text-light">
+  <h1 class="logo display-4">Online in-out Bord</h1>
+  <p class="lead">- 全自動で 在室/出席 状況を管理 -</p>
+  <hr class="my-4">
+  <p>Using smartphone shortcut, you can manage member's presence automatically.</p>
+  <div class="container text-center padding-5">
+    <div class="row">
+      <div class="col">
+        <%= link_to("ルームを作成", "/rooms/new", {class:"btn btn-primary"}) %>
+      </div>
+      <div class="col">
+        <%= link_to("ルームに入る", "/rooms/login_form", {class:"btn btn-primary"}) %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to("ルームを作成", "/rooms/new") %><br>
-<%= link_to("ルームに入る", "/rooms/login_form") %>
