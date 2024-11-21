@@ -1,24 +1,38 @@
-# README
+# AirBord
+全自動在室状況管理ツール
+## コンセプト
+## 技術スタック
+### バックエンド
+* `Ruby 2.7.8` 
+* `Ruby on Rails 7`  
+* `mySQL`
+* `bcrypt`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### フロントエンド
+* `HTML`
+* `SCSS`
+* `javascript`
+* `jquery`
+* `bootstrap`
 
-Things you may want to cover:
+### ソース管理等
+* `Docker`
+* `git`
 
-* Ruby version
 
-* System dependencies
+## 開発環境
+### コンピュータ
+Apple - M1 Mac Book Pro
+### OS
+Mac OS Sequoia 15.x
+### ソフトウェア
+* VSCode
+* Docker Desktop 
 
-* Configuration
+## ページ遷移図
 
-* Database creation
 
-* Database initialization
+## データベース構造
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 
