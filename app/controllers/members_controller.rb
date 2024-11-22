@@ -13,7 +13,7 @@ class MembersController < ActionController::Base
   end
 
   def current_room
-    Room.find_by(uuid: session[:room_id])
+    Room.find_by(uuid: session[:id])
   end
 
   def new
@@ -23,6 +23,7 @@ class MembersController < ActionController::Base
   def create
     @room = Room.find_by(uuid: params['id'])
     @member = Member.new(room_id: @room.uuid, name: params['name'])
+    @member.save
     redirect_to("/rooms/#{@room.uuid}")
   end
 

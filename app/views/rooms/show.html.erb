@@ -7,18 +7,20 @@
     "<%= @room.uuid %>"
 </p>
 
-<div class="mx-auto">
-    <% @members.each do |member| %>
-        <div class="card" style="width: 18rem;">
-            <img src="DSC_1193.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">mamber.name</h5>
-              <p class="card-text">member.state</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-</div>
-    <% end %>
-</div>
+<% if @members %>    
+    <div class="col-10 mx-auto">
+        <% @members.each do |member| %>
+            <div class="card" style="width: 18rem;">
+                <img src="DSC_1193.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= member.name %></h5>
+                  <p class="card-text"><%= member.status %></p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
 
 <div class="text-center">
     <%= link_to("新規メンバーを登録", "/rooms/#{@room.uuid}/members/new", {class: "btn btn-primary m-3"}) %>
