@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/', to: 'top#index'
+
   get 'rooms/new', to: 'rooms#new'
   get 'rooms/login_form', to: 'rooms#login_form'
   post 'rooms/login', to: 'rooms#login'
   get 'rooms/logout', to: 'rooms#logout'
   post 'rooms/create', to: 'rooms#create'
   get '/rooms/:id', to: 'rooms#show'
+
+  get 'rooms/:id/members/new', to: 'members#new'
+  post '/rooms/:id/members/create', to: 'members#create'
 
 end

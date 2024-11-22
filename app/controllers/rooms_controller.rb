@@ -13,22 +13,21 @@ class RoomsController < ActionController::Base
   end
 
   def current_room
-    Room.find_by(uuid: session[:room_id])
+    Room.find_by(uuid: session[:id])
   end
 
   def new
-    session[:room_id] = nil
+    session[:id] = nil
   end
 
   def create
     @room = Room.new(name:params['name'], password: params['password'], password_confirmation: params['password_confirmation'])
     @room.save
-    session[:room_id] = @room.uuid
+    session[:id] = @room.uuid
     redirect_to("/rooms/#{@room.uuid}")
   end
 
   def login_form
-    session[:room_id] = nil
   end
 
   def login
@@ -36,7 +35,7 @@ class RoomsController < ActionController::Base
 
     if @room
       if @room.authenticate(params['password'])
-        session[:room_id] = @room.uuid
+        session[:id] = @room.uuid
         redirect_to("/rooms/#{@room.uuid}")
       else
         @error_message = "IDまたはパスワードが間違っています"
@@ -49,12 +48,13 @@ class RoomsController < ActionController::Base
   end
 
   def logout
-    session[:room_id] = nil
+    session[:id] = nil
     redirect_to('/')
   end
 
   def show
     @room = Room.find_by(uuid: params['id'])
+    @members = Member.where(room_id:@room.uuid)
   end
 
 
