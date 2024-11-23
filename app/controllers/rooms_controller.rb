@@ -38,6 +38,13 @@ class RoomsController < ActionController::Base
     redirect_to("/rooms/#{@room.uuid}")
   end
 
+  def delete
+    @room = Room.find_by(uuid: params['id'])
+    Member.where(room_key: @room.uuid).delete_all
+    Room.find_by(uuid: params['id']).delete
+
+  end
+
   def login_form
   end
 

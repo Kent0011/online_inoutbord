@@ -45,6 +45,12 @@ class MembersController < ActionController::Base
     redirect_to("/rooms/#{@room.uuid}/members/#{@member.id}")
   end
 
+  def delete
+    @room = Room.find_by(uuid: params['id'])
+    Member.find_by(id: params['member_id']).delete
+    redirect_to("/rooms/#{@room.uuid}")
+  end
+
   def arrive
     @room = Room.find_by(uuid: params['id'])
     @member = Member.find_by(id: params['member_id'])

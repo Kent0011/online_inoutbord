@@ -4,7 +4,14 @@
         <h5 class="card-title">
             <%= @member.name %>
         </h5>
-        <%= link_to("編集","/rooms/#{@room.uuid}/members/#{@member.id}/edit", {class:"btn btn-primary btn-sm"}) %>
+        <div class="row">
+            <div class="col m-3">
+                <%= link_to("編集","/rooms/#{@room.uuid}/members/#{@member.id}/edit", {class:"btn btn-primary btn-sm"}) %>
+            </div>
+            <div class="col m-3">
+                <%= button_to("削除","/rooms/#{@room.uuid}/members/#{@member.id}/delete", {class:"btn btn-danger btn-sm"}) %>
+            </div>
+        </div>
     </div>
 </div>
 <p class="text-center">
