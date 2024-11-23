@@ -1,0 +1,23 @@
+<h1 class="text-center m-5">
+    メンバー情報を編集
+</h1>
+
+<div class="m-5">
+    <div class="col-sm-8 col-md-6 mx-auto">
+        <% if @error_message %>
+            <div class="alert alert-danger" role="alert">
+                <%= @error_message %>
+            </div>
+        <% end %>
+
+        <%= form_tag("/rooms/#{@room.uuid}/members/#{@member.id}/update") do %>
+            <div class="m-3">
+              <label for="exampleFormControlInput1" class="form-label"> 名前 </label>
+              <input name="name" class="form-control" placeholder="山田 太郎">
+            </div>
+            <div class="m-3 d-flex justify-content-end">
+                <input type="submit" value="更新" class="btn btn-primary mx-4 my-2">
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 class MembersController < ActionController::Base
   layout "application"
-  before_action :correct_room
+  before_action :correct_room, except: [:arrive, :leave]
 
   def correct_room
     if current_room
@@ -25,6 +25,24 @@ class MembersController < ActionController::Base
     @member = Member.new(room_key: @room.uuid, name: params['name'])
     @member.save
     redirect_to("/rooms/#{@room.uuid}")
+  end
+
+  def show
+    @room = Room.find_by(uuid: params['id'])
+    @member = Member.find_by(id: params['member_id'])
+  end
+
+  def edit
+    @room = Room.find_by(uuid: params['id'])
+    @member = Member.find_by(id: params['member_id'])
+  end
+
+  def update
+    @room = Room.find_by(uuid: params['id'])
+    @member = Member.find_by(id: params['member_id'])
+    @member.name = params['name']
+    @member.save
+    redirect_to("/rooms/#{@room.uuid}/members/#{@member.id}")
   end
 
   def arrive

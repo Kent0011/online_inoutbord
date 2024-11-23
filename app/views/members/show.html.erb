@@ -1,0 +1,18 @@
+<div class="card my-3 mx-auto text-center text-primary-emphasis border border-primary-subtle rounded-3" style="width: 20rem;">
+    <img src="/assets/kkrn_icon_user_1.png" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">
+            <%= @member.name %>
+        </h5>
+        <%= link_to("編集","/rooms/#{@room.uuid}/members/#{@member.id}/edit", {class:"btn btn-primary btn-sm"}) %>
+    </div>
+</div>
+<p class="text-center">
+    到着時URL : <%= "#{request.url}/arrive" %>
+</p>
+<p class="text-center">
+    退出時URL : <%= "#{request.url}/leave" %>
+</p>
+<div class="text-center">
+    <%= link_to("戻る","/rooms/#{@room.uuid}", {class:"btn btn-primary btn-sm"}) %>
+</div>

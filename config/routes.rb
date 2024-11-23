@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   get 'rooms/:id/members/new', to: 'members#new'
   post '/rooms/:id/members/create', to: 'members#create'
+  get '/rooms/:id/members/:member_id', to: 'members#show'
+  get '/rooms/:id/members/:member_id/edit', to: 'members#edit'
+  post '/rooms/:id/members/:member_id/update', to: 'members#update'
   post '/rooms/:id/members/:member_id/arrive', to: 'members#arrive'
   post '/rooms/:id/members/:member_id/leave', to: 'members#leave'
 

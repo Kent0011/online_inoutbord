@@ -13,27 +13,37 @@
             <% @members.each do |member| %>
                 <% if member.status==true %>
                     <div class="col">
-                        <div class="card my-3 mx-auto text-center text-primary-emphasis border border-primary-subtle rounded-3" style="width: 15rem;">
-                            <img src="/assets/DSC_1193.jpeg" class="card-img-top">
+                        <div class="card my-3 mx-auto text-center text-primary-emphasis border border-primary-subtle rounded-3" style="width: 12rem;">
+                            <img src="/assets/kkrn_icon_user_1.png" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title"><%= member.name %></h5>
+                                <h5 class="card-title">
+                                    <%= member.name %>
+                                    <%= link_to("/rooms/#{@room.uuid}/members/#{member.id}") do %>
+                                        <i class="las la-info-circle"></i>
+                                    <% end %>
+                                </h5>
                                 <%= button_to("leave","/rooms/#{@room.uuid}/members/#{member.id}/leave", {class:"btn btn-primary btn-sm"}) %>
                             </div>
                             <div class="card-footer text-body-secondary bg-primary-subtle">
-                                present
+                                <i class="las la-user"></i>present
                             </div>
                         </div>
                     </div>
                 <% else %>
                     <div class="col">
-                        <div class="card my-3 mx-auto text-center text-primary-emphasis rounded-3" style="width: 15rem;">
-                            <img src="/assets/DSC_1193.jpeg" class="card-img-top">
+                        <div class="card my-3 mx-auto text-center text-primary-emphasis rounded-3" style="width: 12rem;">
+                            <img src="/assets/kkrn_icon_user_1.png" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title"><%= member.name %></h5>
+                                <h5 class="card-title">
+                                    <%= member.name %>
+                                    <%= link_to("/rooms/#{@room.uuid}/members/#{member.id}") do %>
+                                        <i class="las la-info-circle"></i>
+                                    <% end %>
+                                </h5>
                                 <%= button_to("arrive","/rooms/#{@room.uuid}/members/#{member.id}/arrive", {class:"btn btn-outline-primary btn-sm"}) %>
                             </div>
                             <div class="card-footer text-body-secondary">
-                                absent
+                                <i class="las la-user-slash"></i>absent
                             </div>
                         </div>
                     </div>
