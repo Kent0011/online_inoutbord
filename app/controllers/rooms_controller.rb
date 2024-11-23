@@ -27,6 +27,17 @@ class RoomsController < ActionController::Base
     redirect_to("/rooms/#{@room.uuid}")
   end
 
+  def edit
+    @room = Room.find_by(uuid: params['id'])
+  end
+
+  def update
+    @room = Room.find_by(uuid: params['id'])
+    @room.name = params['name']
+    @room.save
+    redirect_to("/rooms/#{@room.uuid}")
+  end
+
   def login_form
   end
 
