@@ -22,7 +22,7 @@
                                         <i class="las la-info-circle"></i>
                                     <% end %>
                                 </h5>
-                                <%= button_to("leave","/rooms/#{@room.uuid}/members/#{member.id}/leave", {class:"btn btn-primary btn-sm"}) %>
+                                <%= button_to("Leave","/rooms/#{@room.uuid}/members/#{member.id}/leave", {class:"btn btn-primary btn-sm"}) %>
                             </div>
                             <div class="card-footer text-body-secondary bg-primary-subtle">
                                 <i class="las la-user"></i>present
@@ -40,7 +40,7 @@
                                         <i class="las la-info-circle"></i>
                                     <% end %>
                                 </h5>
-                                <%= button_to("arrive","/rooms/#{@room.uuid}/members/#{member.id}/arrive", {class:"btn btn-outline-primary btn-sm"}) %>
+                                <%= button_to("Arrive","/rooms/#{@room.uuid}/members/#{member.id}/arrive", {class:"btn btn-outline-primary btn-sm"}) %>
                             </div>
                             <div class="card-footer text-body-secondary">
                                 <i class="las la-user-slash"></i>absent

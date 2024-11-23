@@ -25,4 +25,7 @@ Rails.application.routes.draw do
   post '/rooms/:id/members/:member_id/arrive', to: 'members#arrive'
   post '/rooms/:id/members/:member_id/leave', to: 'members#leave'
 
+  post '/API/:room_id/:member_id/arrive', to: 'api#arrive'
+  post '/API/:room_id/:member_id/leave', to: 'api#leave'
+
 end

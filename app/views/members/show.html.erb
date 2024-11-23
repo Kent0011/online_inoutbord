@@ -15,10 +15,7 @@
     </div>
 </div>
 <p class="text-center">
-    到着時URL : <%= "#{request.url}/arrive" %>
-</p>
-<p class="text-center">
-    退出時URL : <%= "#{request.url}/leave" %>
+    自動化URL : <%= "#{request.protocol}#{request.host_with_port}/API/#{@room.uuid}/#{@member.id}" %>
 </p>
 <div class="text-center">
     <%= link_to("戻る","/rooms/#{@room.uuid}", {class:"btn btn-primary btn-sm"}) %>

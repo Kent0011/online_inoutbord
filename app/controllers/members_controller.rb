@@ -1,6 +1,6 @@
 class MembersController < ActionController::Base
   layout "application"
-  before_action :correct_room, except: [:arrive, :leave]
+  before_action :correct_room
 
   def correct_room
     if current_room
