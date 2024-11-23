@@ -1,24 +1,46 @@
-<h1 class="text-center m-5">
+<h1 class="text-center mt-5 mx-5">
     <%= @room.name %>
 </h1>
 
-<p class="text-center">
+<p class="text-center m-2">
     Room ID : 
-    "<%= @room.uuid %>"
+    <%= @room.uuid %>
 </p>
 
 <% if @members %>    
-    <div class="col-10 mx-auto">
-        <% @members.each do |member| %>
-            <div class="card" style="width: 18rem;">
-                <img src="DSC_1193.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= member.name %></h5>
-                  <p class="card-text"><%= member.status %></p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            </div>
-        <% end %>
+    <div class="col-10 my-5 mx-auto">
+        <div class="row">
+            <% @members.each do |member| %>
+                <% if member.status==true %>
+                    <div class="col">
+                        <div class="card my-3 mx-auto text-center text-primary-emphasis border border-primary-subtle rounded-3" style="width: 15rem;">
+                            <img src="/assets/DSC_1193.jpeg" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= member.name %></h5>
+                                <%= button_to("leave","/rooms/#{@room.uuid}/members/#{member.id}/leave", {class:"btn btn-primary btn-sm"}) %>
+                            </div>
+                            <div class="card-footer text-body-secondary bg-primary-subtle">
+                                present
+                            </div>
+                        </div>
+                    </div>
+                <% else %>
+                    <div class="col">
+                        <div class="card my-3 mx-auto text-center text-primary-emphasis rounded-3" style="width: 15rem;">
+                            <img src="/assets/DSC_1193.jpeg" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= member.name %></h5>
+                                <%= button_to("arrive","/rooms/#{@room.uuid}/members/#{member.id}/arrive", {class:"btn btn-outline-primary btn-sm"}) %>
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                                absent
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+
+            <% end %>
+        </div>
     </div>
 <% end %>
 

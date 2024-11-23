@@ -22,7 +22,23 @@ class MembersController < ActionController::Base
 
   def create
     @room = Room.find_by(uuid: params['id'])
-    @member = Member.new(room_id: @room.uuid, name: params['name'])
+    @member = Member.new(room_key: @room.uuid, name: params['name'])
+    @member.save
+    redirect_to("/rooms/#{@room.uuid}")
+  end
+
+  def arrive
+    @room = Room.find_by(uuid: params['id'])
+    @member = Member.find_by(id: params['member_id'])
+    @member.status = true
+    @member.save
+    redirect_to("/rooms/#{@room.uuid}")
+  end
+
+  def leave
+    @room = Room.find_by(uuid: params['id'])
+    @member = Member.find_by(id: params['member_id'])
+    @member.status = false
     @member.save
     redirect_to("/rooms/#{@room.uuid}")
   end

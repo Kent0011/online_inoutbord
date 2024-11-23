@@ -54,7 +54,7 @@ class RoomsController < ActionController::Base
 
   def show
     @room = Room.find_by(uuid: params['id'])
-    @members = Member.where(room_id:@room.uuid)
+    @members = Member.where(room_key:@room.uuid).order({status: :desc}, {updated_at: :desc})
   end
 
 

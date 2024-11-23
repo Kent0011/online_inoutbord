@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get 'rooms/:id/members/new', to: 'members#new'
   post '/rooms/:id/members/create', to: 'members#create'
+  post '/rooms/:id/members/:member_id/arrive', to: 'members#arrive'
+  post '/rooms/:id/members/:member_id/leave', to: 'members#leave'
 
 end

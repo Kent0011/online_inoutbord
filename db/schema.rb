@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_11_22_135437) do
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "room_id", null: false
+    t.string "room_key", null: false
     t.string "name"
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
