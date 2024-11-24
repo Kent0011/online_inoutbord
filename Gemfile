@@ -76,5 +76,4 @@ gem "sassc-rails"
 #   gem "capybara"
 #   gem "selenium-webdriver"
 #   gem "webdrivers"
-
-end
+# end
