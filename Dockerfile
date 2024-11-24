@@ -14,4 +14,4 @@ RUN bundle config --local set path 'vendor/bundle' \
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
-CMD ["sh", "/start,sh"]
+CMD ["sh", "/start.sh"]
