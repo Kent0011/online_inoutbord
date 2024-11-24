@@ -9,6 +9,12 @@ $grid-breakpoints: (
   xxl: 1400px
 );
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .navbar-brand{
     font-family: 'Sawarabi Mincho', sans-serif;
 }
@@ -29,6 +35,7 @@ $grid-breakpoints: (
 }
 
 .footer {
+    margin-top: auto;
     bottom: 0;
     width: 100%;
     height: 180px;

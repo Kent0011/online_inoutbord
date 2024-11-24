@@ -21,10 +21,15 @@ class RoomsController < ActionController::Base
   end
 
   def create
-    @room = Room.new(name:params['name'], password: params['password'], password_confirmation: params['password_confirmation'])
-    @room.save
-    session[:id] = @room.uuid
-    redirect_to("/rooms/#{@room.uuid}")
+    if params['password'] == params['password_confirmation']
+      @room = Room.new(name:params['name'], password: params['password'], password_confirmation: params['password_confirmation'])
+      @room.save
+      session[:id] = @room.uuid
+      redirect_to("/rooms/#{@room.uuid}")
+    else
+      @error_message = "パスワードが間違っています"
+      render('/rooms/new')
+    end
   end
 
   def edit
