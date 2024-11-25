@@ -44,9 +44,19 @@ class RoomsController < ActionController::Base
 
   def update
     @room = Room.find_by(uuid: params['id'])
-    @room.name = params['name']
-    @room.save
-    redirect_to("/rooms/#{@room.uuid}")
+    if @room.name == params['name']
+      redirect_to("/rooms/#{@room.uuid}")
+    else
+      @double = Room.find_by(name:params['name'])
+      if @double
+        @error_message = "このルーム名は使用されています"
+        render :edit
+      else
+        @room.name = params['name']
+        @room.save
+        redirect_to("/rooms/#{@room.uuid}")
+      end
+    end
   end
 
   def delete

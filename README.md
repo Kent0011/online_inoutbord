@@ -6,18 +6,16 @@
 * `Ruby 2.7.8` 
 * `Ruby on Rails 7`  
 * `mySQL`
-* `bcrypt`
 
 ### フロントエンド
 * `HTML`
 * `SCSS`
-* `javascript`
-* `jquery`
 * `bootstrap`
 
-### ソース管理等
+### その他
 * `Docker`
-* `git`
+* `Git`
+* `Heroku`
 
 
 ## 開発環境

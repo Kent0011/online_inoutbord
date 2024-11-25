@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/', to: 'top#index'
+  get '/iphone', to: 'top#iphone'
+  get '/android', to: 'top#android'
 
   get '/rooms/new', to: 'rooms#new'
   get '/rooms/login', to: 'rooms#login_new'

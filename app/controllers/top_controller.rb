@@ -5,5 +5,10 @@ class TopController < ActionController::Base
     session[:id] = nil
   end
 
+  def iphone
+  end
+
+  def android
+  end
 
 end
