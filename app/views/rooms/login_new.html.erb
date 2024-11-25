@@ -1,0 +1,28 @@
+<h1 class="text-center m-5">
+    ログイン
+</h1>
+
+<div class="m-5">
+    <div class="col-sm-12 col-md-8 mx-auto">
+        <% if @error_message %>
+            <div class="alert alert-danger" role="alert">
+                <%= @error_message %>
+            </div>
+        <% end %>
+
+        <%= form_tag("/rooms/login_new") do %>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">ルーム名</label>
+              <input name="name" class="form-control" placeholder="ルーム名">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">password</label>
+              <input type="password" name="password" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"></textarea>
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="submit" value="ログイン" class="btn btn-primary mx-4 my-2">
+            </div>
+        <% end %>
+    </div>
+</div>

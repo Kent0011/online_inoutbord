@@ -1,14 +1,14 @@
 class RoomsController < ActionController::Base
   layout "application"
-  before_action :correct_room, except: [:new, :create, :login_form, :login, :logout]
+  before_action :correct_room, except: [:new, :create, :login_form, :login, :logout, :login_new, :login_new_p]
 
   def correct_room
     if current_room
       unless current_room.uuid == params['id']
-        redirect_to('/rooms/login_form')
+        redirect_to("/rooms/#{params['id']}/login")
       end
     else
-      redirect_to('/rooms/login_form')
+      redirect_to("/rooms/#{params['id']}/login")
     end
   end
 
@@ -22,10 +22,16 @@ class RoomsController < ActionController::Base
 
   def create
     if params['password'] == params['password_confirmation']
-      @room = Room.new(name:params['name'], password: params['password'], password_confirmation: params['password_confirmation'])
-      @room.save
-      session[:id] = @room.uuid
-      redirect_to("/rooms/#{@room.uuid}")
+      @double = Room.find_by(name:params['name'])
+      if @double
+        @error_message = "このルーム名は使用されています"
+        render('/rooms/new')
+      else
+        @room = Room.new(name:params['name'], password: params['password'], password_confirmation: params['password_confirmation'])
+        @room.save
+        session[:id] = @room.uuid
+        redirect_to("/rooms/#{@room.uuid}")
+      end
     else
       @error_message = "パスワードが間違っています"
       render('/rooms/new')
@@ -47,10 +53,31 @@ class RoomsController < ActionController::Base
     @room = Room.find_by(uuid: params['id'])
     Member.where(room_key: @room.uuid).delete_all
     Room.find_by(uuid: params['id']).delete
+    redirect_to('/')
+  end
 
+  def login_new
+  end
+
+  def login_new_p
+    @room = Room.find_by(name: params['name'])
+
+    if @room
+      if @room.authenticate(params['password'])
+        session[:id] = @room.uuid
+        redirect_to("/rooms/#{@room.uuid}")
+      else
+        @error_message = "ルーム名またはパスワードが間違っています"
+        render("/rooms/login_new")
+      end
+    else
+      @error_message = "ルーム名またはパスワードが間違っています"
+      render("/rooms/login_new")
+    end
   end
 
   def login_form
+    @room = Room.find_by(uuid: params['id'])
   end
 
   def login
@@ -61,12 +88,12 @@ class RoomsController < ActionController::Base
         session[:id] = @room.uuid
         redirect_to("/rooms/#{@room.uuid}")
       else
-        @error_message = "IDまたはパスワードが間違っています"
-        render('/rooms/login_form')
+        @error_message = "パスワードが間違っています"
+        render("/rooms/#{params['id']}/login")
       end
     else
-      @error_message = "IDまたはパスワードが間違っています"
-      render('/rooms/login_form')
+      @error_message = "パスワードが間違っています"
+      render("/rooms/#{params['id']}/login")
     end
   end
 

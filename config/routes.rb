@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get '/', to: 'top#index'
 
   get '/rooms/new', to: 'rooms#new'
-  get '/rooms/login_form', to: 'rooms#login_form'
-  post '/rooms/login', to: 'rooms#login'
+  get '/rooms/login', to: 'rooms#login_new'
+  post '/rooms/login_new', to: 'rooms#login_new_p'
+  get '/rooms/:id/login', to: 'rooms#login_form'
+  post '/rooms/:id/login', to: 'rooms#login'
   get '/rooms/logout', to: 'rooms#logout'
   post '/rooms/create', to: 'rooms#create'
   get '/rooms/:id', to: 'rooms#show'

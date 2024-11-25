@@ -17,6 +17,6 @@
 <p class="text-center">
     自動化URL : <%= "#{request.protocol}#{request.host_with_port}/API/#{@room.uuid}/#{@member.id}" %>
 </p>
-<div class="text-center">
+<div class="text-center mb-3">
     <%= link_to("戻る","/rooms/#{@room.uuid}", {class:"btn btn-primary btn-sm"}) %>
 </div>

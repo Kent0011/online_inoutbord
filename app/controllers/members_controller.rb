@@ -5,10 +5,10 @@ class MembersController < ActionController::Base
   def correct_room
     if current_room
       unless current_room.uuid == params['id']
-        redirect_to('/rooms/login_form')
+        redirect_to("/rooms/#{params['id']}/login")
       end
     else
-      redirect_to('/rooms/login_form')
+      redirect_to("/rooms/#{params['id']}/login")
     end
   end
 
