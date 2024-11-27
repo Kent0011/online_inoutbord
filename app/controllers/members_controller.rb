@@ -22,9 +22,14 @@ class MembersController < ActionController::Base
 
   def create
     @room = Room.find_by(uuid: params['id'])
-    @member = Member.new(room_key: @room.uuid, name: params['name'])
-    @member.save
-    redirect_to("/rooms/#{@room.uuid}")
+    if params['name'] == ''
+      @error_message = "名前を入力してください"
+      render :new
+    else
+      @member = Member.new(room_key: @room.uuid, name: params['name'])
+      @member.save
+      redirect_to("/rooms/#{@room.uuid}")
+    end
   end
 
   def show
@@ -40,9 +45,14 @@ class MembersController < ActionController::Base
   def update
     @room = Room.find_by(uuid: params['id'])
     @member = Member.find_by(id: params['member_id'])
-    @member.name = params['name']
-    @member.save
-    redirect_to("/rooms/#{@room.uuid}/members/#{@member.id}")
+    if params['name'] == ''
+      @error_message = "名前を入力してください"
+      render :edit
+    else
+      @member.name = params['name']
+      @member.save
+      redirect_to("/rooms/#{@room.uuid}/members/#{@member.id}")
+    end
   end
 
   def delete
