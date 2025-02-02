@@ -12,10 +12,13 @@
 * `SCSS`
 * `bootstrap`
 
-### その他
+### 開発
 * `Docker`
 * `Git`
+
+### デプロイ
 * `Heroku`
+* `GitHub Actions`
 
 
 ## 開発環境
