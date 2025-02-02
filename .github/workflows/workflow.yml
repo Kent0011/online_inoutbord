@@ -8,6 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+          heroku container:login
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v3
 
