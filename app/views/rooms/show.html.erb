@@ -3,8 +3,8 @@
 </h1>
 
 <p class="text-center m-2">
-    Room ID : 
-    <%= @room.uuid %>
+    共有 : 
+    <%= "#{request.protocol}#{request.host_with_port}/rooms/#{@room.uuid}" %>
 </p>
 
 <% if @members %>    
